@@ -121,6 +121,7 @@ func (src *Rollout) ConvertTo(dst conversion.Hub) error {
 			CanaryRevision:      src.Status.CanaryStatus.CanaryRevision,
 			CanaryReplicas:      src.Status.CanaryStatus.CanaryReplicas,
 			CanaryReadyReplicas: src.Status.CanaryStatus.CanaryReadyReplicas,
+			Replicas:            src.Status.CanaryStatus.Replicas,
 		}
 		return nil
 	default:
@@ -259,6 +260,7 @@ func (dst *Rollout) ConvertFrom(src conversion.Hub) error {
 			PodTemplateHash:            srcV1beta1.Status.CanaryStatus.PodTemplateHash,
 			CanaryReplicas:             srcV1beta1.Status.CanaryStatus.CanaryReplicas,
 			CanaryReadyReplicas:        srcV1beta1.Status.CanaryStatus.CanaryReadyReplicas,
+			Replicas:                   srcV1beta1.Status.CanaryStatus.Replicas,
 			CurrentStepIndex:           srcV1beta1.Status.CanaryStatus.CurrentStepIndex,
 			CurrentStepState:           CanaryStepState(srcV1beta1.Status.CanaryStatus.CurrentStepState),
 			Message:                    srcV1beta1.Status.CanaryStatus.Message,

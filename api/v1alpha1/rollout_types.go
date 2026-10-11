@@ -252,6 +252,12 @@ type CanaryStatus struct {
 	CanaryReplicas int32 `json:"canaryReplicas"`
 	// CanaryReadyReplicas the numbers of ready canary revision pods
 	CanaryReadyReplicas int32 `json:"canaryReadyReplicas"`
+	// Replicas is the total number of replicas of the referenced workload, as last observed
+	// by the rollout. This lets callers read the workload's replica count directly from the
+	// rollout status instead of looking up the workload, which matters when the workload is
+	// scaled automatically (e.g. by an HPA).
+	// +optional
+	Replicas int32 `json:"replicas,omitempty"`
 	// NextStepIndex defines the next step of the rollout is on.
 	// In normal case, NextStepIndex is equal to CurrentStepIndex + 1
 	// If the current step is the last step, NextStepIndex is equal to -1

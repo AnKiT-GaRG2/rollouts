@@ -430,6 +430,7 @@ func (m *canaryReleaseManager) syncBatchRelease(br *v1beta1.BatchRelease, canary
 	// sync from BatchRelease status to Rollout canaryStatus
 	canaryStatus.CanaryReplicas = br.Status.CanaryStatus.UpdatedReplicas
 	canaryStatus.CanaryReadyReplicas = br.Status.CanaryStatus.UpdatedReadyReplicas
+	canaryStatus.Replicas = br.Status.ObservedWorkloadReplicas
 	// Do not remove this line currently, otherwise, users will be not able to judge whether the BatchRelease works
 	// in the scene where only rollout-id changed.
 	// TODO: optimize the logic to better understand

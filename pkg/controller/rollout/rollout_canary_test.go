@@ -176,7 +176,8 @@ func TestRunCanary(t *testing.T) {
 					ObservedGeneration: 1,
 					// since we use RollingStyle over EnableExtraWorkloadForCanary now, former hardcoded hash
 					// should be re-calculated
-					ObservedReleasePlanHash: util.HashReleasePlanBatches(&br.Spec.ReleasePlan),
+					ObservedReleasePlanHash:  util.HashReleasePlanBatches(&br.Spec.ReleasePlan),
+					ObservedWorkloadReplicas: 10,
 					CanaryStatus: v1beta1.BatchReleaseCanaryStatus{
 						CurrentBatchState:    v1beta1.ReadyBatchState,
 						CurrentBatch:         0,
@@ -195,6 +196,7 @@ func TestRunCanary(t *testing.T) {
 				s.CanaryStatus.PodTemplateHash = "pod-template-hash-v2"
 				s.CanaryStatus.CanaryReplicas = 1
 				s.CanaryStatus.CanaryReadyReplicas = 1
+				s.CanaryStatus.Replicas = 10
 				s.CanaryStatus.CurrentStepIndex = 1
 				s.CanaryStatus.NextStepIndex = 2
 				s.CanaryStatus.CurrentStepState = v1beta1.CanaryStepStateTrafficRouting

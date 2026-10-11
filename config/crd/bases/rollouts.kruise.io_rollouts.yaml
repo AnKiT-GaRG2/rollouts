@@ -537,6 +537,14 @@ spec:
                   podTemplateHash:
                     description: pod template hash is used as service selector label
                     type: string
+                  replicas:
+                    description: |-
+                      Replicas is the total number of replicas of the referenced workload, as last observed
+                      by the rollout. This lets callers read the workload's replica count directly from the
+                      rollout status instead of looking up the workload, which matters when the workload is
+                      scaled automatically (e.g. by an HPA).
+                    format: int32
+                    type: integer
                   rolloutHash:
                     description: RolloutHash from rollout.spec object
                     type: string
@@ -1885,6 +1893,14 @@ spec:
                   podTemplateHash:
                     description: pod template hash is used as service selector label
                     type: string
+                  replicas:
+                    description: |-
+                      Replicas is the total number of replicas of the referenced workload, as last observed
+                      by the rollout. This lets callers read the workload's replica count directly from the
+                      rollout status instead of looking up the workload, which matters when the workload is
+                      scaled automatically (e.g. by an HPA).
+                    format: int32
+                    type: integer
                   rolloutHash:
                     description: RolloutHash from rollout.spec object
                     type: string
